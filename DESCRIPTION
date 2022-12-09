@@ -1,0 +1,13 @@
+Package: MasterPackage
+Type: Package
+Title: Quantile Forecast
+Version: 0.1.0
+Author: Eirik Sjåvik
+Maintainer: Eirik Sjåvik <eirikhsj@math.uio.no>
+Description: Loads ERA and NWP data. 
+    Runs models for quantile forecast of temperature data. 
+License: GPL-2
+Encoding: UTF-8
+Imports: data.table, quantreg
+LazyData: true
+RoxygenNote: 7.2.1
