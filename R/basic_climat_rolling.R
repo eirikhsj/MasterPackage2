@@ -68,4 +68,4 @@ rolling_mod_climatology = function(q, ERA_NWP,window = 60){
     out$Results = Results
     return(out)
 }
-ERA_NWP =get_ERA_NWP()
+#ERA_NWP =get_ERA_NWP()

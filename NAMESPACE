@@ -3,6 +3,7 @@
 export(get_ERA_NWP)
 export(pinball_loss)
 export(rolling_mod)
+export(rolling_mod_climatology)
 import(data.table)
 import(quantreg)
 import(stats)
