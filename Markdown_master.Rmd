@@ -41,6 +41,12 @@ The results of these tests are that:
 - Are we doing better vs climatology in certain months?
 
 
+
+1:15 16:30 31:45 46:60
+
+
+
+
 #Run models with wave month and week
 ```{r}
 M_9_60_0       = rolling_mod(0.9, ERA_NWP, 0, model = 'reg', window = 60)
@@ -191,6 +197,90 @@ save(M_9_60_0_h_w_m_y, file = 'model_output_data/M_9_60_0_h_w_m_y.Rda')
 save(M_9_60_1_h_w_m_y, file = 'model_output_data/M_9_60_1_h_w_m_y.Rda')
 save(M_9_60_2_h_w_m_y, file = 'model_output_data/M_9_60_2_h_w_m_y.Rda')
 ```
+
+# load
+```{r}
+#Simple
+load('model_output_data/M_9_60_0.Rda')
+load('model_output_data/M_9_60_1.Rda')
+load('model_output_data/M_9_60_2.Rda')
+
+#Week
+load('model_output_data/M_9_60_0_w.Rda')
+load('model_output_data/M_9_60_1_w.Rda')
+load('model_output_data/M_9_60_2_w.Rda')
+
+#Month
+load('model_output_data/M_9_60_0_m.Rda')
+load('model_output_data/M_9_60_1_m.Rda')
+load('model_output_data/M_9_60_2_m.Rda')
+
+#Hour
+load('model_output_data/M_9_60_0_h.Rda')
+load('model_output_data/M_9_60_1_h.Rda')
+load('model_output_data/M_9_60_2_h.Rda')
+
+#Year
+load('model_output_data/M_9_60_0_y.Rda')
+load('model_output_data/M_9_60_1_y.Rda')
+load('model_output_data/M_9_60_2_y.Rda')
+
+#Hour and week
+load('model_output_data/M_9_60_0_h_w.Rda')
+load('model_output_data/M_9_60_1_h_w.Rda')
+load('model_output_data/M_9_60_2_h_w.Rda')
+
+#Hour and month
+load('model_output_data/M_9_60_0_h_m.Rda')
+load('model_output_data/M_9_60_1_h_m.Rda')
+load('model_output_data/M_9_60_2_h_m.Rda')
+
+#Hour and year
+load('model_output_data/M_9_60_0_h_y.Rda')
+load('model_output_data/M_9_60_1_h_y.Rda')
+load('model_output_data/M_9_60_2_h_y.Rda')
+
+#Week and month
+load('model_output_data/M_9_60_0_w_m.Rda')
+load('model_output_data/M_9_60_1_w_m.Rda')
+load('model_output_data/M_9_60_2_w_m.Rda')
+
+#Week and year
+load('model_output_data/M_9_60_0_w_y.Rda')
+load('model_output_data/M_9_60_1_w_y.Rda')
+load('model_output_data/M_9_60_2_w_y.Rda')
+
+#Month and year
+load('model_output_data/M_9_60_0_m_y.Rda')
+load('model_output_data/M_9_60_1_m_y.Rda')
+load('model_output_data/M_9_60_2_m_y.Rda')
+
+#Hour, week and month 
+load('model_output_data/M_9_60_0_h_w_m.Rda')
+load('model_output_data/M_9_60_1_h_w_m.Rda')
+load('model_output_data/M_9_60_2_h_w_m.Rda')
+
+#Hour, week and year 
+load('model_output_data/M_9_60_0_h_w_y.Rda')
+load('model_output_data/M_9_60_1_h_w_y.Rda')
+load('model_output_data/M_9_60_2_h_w_y.Rda')
+
+#Hour, month and year 
+load('model_output_data/M_9_60_0_h_m_y.Rda')
+load('model_output_data/M_9_60_1_h_m_y.Rda')
+load('model_output_data/M_9_60_2_h_m_y.Rda')
+
+#Week, month and year 
+load('model_output_data/M_9_60_0_w_m_y.Rda')
+load('model_output_data/M_9_60_1_w_m_y.Rda')
+load('model_output_data/M_9_60_2_w_m_y.Rda')
+
+#Hour, week, month and year 
+load('model_output_data/M_9_60_0_h_w_m_y.Rda')
+load('model_output_data/M_9_60_1_h_w_m_y.Rda')
+load('model_output_data/M_9_60_2_h_w_m_y.Rda')
+```
+
 
 # Plot
 ```{r, cache = TRUE}
@@ -662,10 +752,10 @@ matlines(low:upp, plot_rolling1_h_m[low:upp,mean_test_loss], col = 'darkturquois
 matlines(low:upp, plot_rolling1_h_w[low:upp,mean_test_loss], col = 'forestgreen', lty = 1) #Best 30-60  8.847009
 
 matlines(low:upp, plot_rolling2_h_w[low:upp,mean_test_loss], col = 'orange', lty = 1) #Best on all 1-60 8.072443, 1-30 7.275398 30-60  8.869488
-plotz= mod_climate$Results[, .(mean_test_loss = mean(test_loss)), keyby=.(horizon =lead_time)]
-matlines(low:upp, plotz[low:upp,mean_test_loss], col = 'grey', lty = 1) #Climatology
+#plotz= mod_climate$Results[, .(mean_test_loss = mean(test_loss)), keyby=.(horizon =lead_time)]
+#matlines(low:upp, plotz[low:upp,mean_test_loss], col = 'grey', lty = 1) #Climatology
 
-mean(plotz[low:upp,mean_test_loss])
+#mean(plotz[low:upp,mean_test_loss])
 
 #Skillsplot 
 S1 = 1 - (plot_rolling1_h_w[low:upp,mean_test_loss]/plot_rolling0_h_w_m_y[low:upp,mean_test_loss])
